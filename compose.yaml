@@ -1,0 +1,59 @@
+services:
+    database:
+        container_name: database
+        image: postgres:18
+        restart: always
+        env_file:
+            - "database.env"
+        environment:
+            POSTGRES_PASSWORD_FILE : /run/secrets/database_password
+        secrets:
+            - database_password
+        healthcheck:
+            test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
+            interval: 10s
+            retries: 5
+            start_period: 30s
+            timeout: 10s
+        ports:
+            - "5432:5432"
+        volumes:
+            - "database-data:/var/lib/postgresql"
+            - "./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+    bot:
+        container_name: discord_bot
+        build: .
+        depends_on:
+            database:
+                condition: service_healthy
+                restart: true
+        env_file:
+            - "bot.env"
+        develop:
+            watch:
+              - action: sync
+                path: .
+                target: /app
+                ignore:
+                  - .venv/
+              - action: rebuild
+                path: ./pyproject.toml
+    adminer:
+        container_name: db_web_interface
+        image: adminer:5-standalone
+        restart: unless-stopped
+        ports:
+          -  "8080:8080"
+        env_file:
+            - "database.env"
+
+networks:
+    default:
+        name: Bingo_Bot
+
+volumes:
+    database-data: {}
+
+secrets:
+    database_password:
+        file: database_password.txt
