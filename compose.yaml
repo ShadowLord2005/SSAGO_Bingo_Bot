@@ -13,7 +13,7 @@ services:
             test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
             interval: 10s
             retries: 5
-            start_period: 30s
+            start_period: 15s
             timeout: 10s
         ports:
             - "5432:5432"
@@ -52,7 +52,7 @@ networks:
         name: Bingo_Bot
 
 volumes:
-    database-data: {}
+    database_data: {}
 
 secrets:
     database_password:
