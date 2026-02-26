@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
+        "aconn",
+        "conninfo",
         "healthcheck",
-        "isready"
+        "isready",
+        "templatelib"
     ]
 }

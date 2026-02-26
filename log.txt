@@ -1,0 +1,7 @@
+Imports Complete
+Creating Instance
+Starting Bot Init
+Starting Bot
+[2026-02-21 01:58:37] [INFO    ] discord.client: logging in using static token
+[2026-02-21 01:58:38] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 8fa17ff4cf040e12b5043adb7eb4f5fc).
+[2026-02-21 01:58:40] [INFO    ] __main__: Logged in as SSAGO Games Bot#6294

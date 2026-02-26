@@ -11,14 +11,14 @@ services:
             - database_password
         healthcheck:
             test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
-            interval: 10s
-            retries: 5
-            start_period: 15s
+            interval: 15s
+            retries: 6
+            start_period: 35s
             timeout: 10s
         ports:
             - "5432:5432"
         volumes:
-            - "database-data:/var/lib/postgresql"
+            - "database_data:/var/lib/postgresql"
             - "./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
     bot:
         container_name: discord_bot
@@ -29,9 +29,10 @@ services:
                 restart: true
         env_file:
             - "bot.env"
+            - "database.env"
         develop:
             watch:
-              - action: sync
+              - action: sync+restart
                 path: .
                 target: /app
                 ignore:
