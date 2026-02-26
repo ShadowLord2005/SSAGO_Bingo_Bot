@@ -194,6 +194,7 @@ cython_debug/
 .cursorindexingignore
 
 database_password.txt
+bot_token.txt
 
 tmp.py
 screenshot.png
