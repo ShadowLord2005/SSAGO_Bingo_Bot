@@ -1,12 +1,26 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+}
+
 table {
     background-color: white;
     border: 5px solid black;
+    border-collapse: collapse;
+    margin: 1vh;
+    padding: 1vh;
 }
 
 td {
-    width: 100px;
-    height: 100px;
+    width: 18vh;
+    height: 18vh;
     text-align: center;
     border: 5px solid black;
+    vertical-align: middle;
 }
 

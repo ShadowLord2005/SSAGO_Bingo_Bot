@@ -1,8 +1,9 @@
 from html2image import Html2Image
 
-imager = Html2Image(size=(600,600))
+imager = Html2Image(size=(800,800))
 
 table = """
+<body>
 <table>
     <tr>
         <td>1</td>
@@ -40,6 +41,7 @@ table = """
         <td>25</td>
     </tr>
 </table>
+</body>
 """
 
 imager.screenshot(html_str=table, css_file="cards.css")
