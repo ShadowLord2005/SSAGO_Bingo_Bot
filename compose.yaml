@@ -19,7 +19,7 @@ services:
             - "5432:5432"
         volumes:
             - "database_data:/var/lib/postgresql"
-            - "./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+            #- "./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
     bot:
         container_name: discord_bot
         build: .
@@ -43,6 +43,10 @@ services:
         container_name: db_web_interface
         image: adminer:5-standalone
         restart: unless-stopped
+        depends_on:
+            database:
+                condition: service_healthy
+                restart: true
         ports:
           -  "8080:8080"
         env_file:

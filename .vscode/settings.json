@@ -1,9 +1,12 @@
 {
     "cSpell.words": [
         "aconn",
+        "CARDSQUARE",
         "conninfo",
         "healthcheck",
         "isready",
+        "sessionmaker",
+        "SQUARETYPEREL",
         "templatelib"
     ]
 }

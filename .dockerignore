@@ -3,3 +3,7 @@
 ruff.toml
 README.md
 .gitignore
+*.egg-info
+*.png
+**/__pycache__/
+tmp.py
